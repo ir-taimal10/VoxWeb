@@ -20,7 +20,7 @@ var numWorkers = CPU_NUM;
 
 if (cluster.isMaster) {
 
-    fs.writeFileSync(path.join(logDirectory, 'pid.txt'), process.pid + '=master\n');
+    //fs.writeFileSync(path.join(logDirectory, 'pid.txt'), process.pid + '=master\n');
 
     fs.appendFileSync(fileLog, '\n\n-------------------------------Initializing workers...\n');
     fs.appendFileSync(fileLog, 'Cluster MASTER starting... PID: ' + process.pid + '. Initializing ' + numWorkers + ' workers!\n');
@@ -58,7 +58,7 @@ if (cluster.isMaster) {
             address.address = 'localhost';
         }
 
-        fs.appendFileSync(path.join(logDirectory, 'pid.txt'), worker.process.pid + '=worker' + '\n');
+        //fs.appendFileSync(path.join(logDirectory, 'pid.txt'), worker.process.pid + '=worker' + '\n');
         fs.appendFileSync(fileLog, 'Cluster worker PID: ' + worker.process.pid + ' listening! the worker is now connected to ' + address.address + ':' + address.port + ' [type: ' + addressType + ']\n');
         console.log('Cluster worker PID: ' + worker.process.pid + ' listening! the worker is now connected to ' + address.address + ':' + address.port + ' [type: ' + addressType + ']');
     });
@@ -69,16 +69,16 @@ if (cluster.isMaster) {
     });
 
     cluster.on('exit', function (worker, code, signal) {
-        properties.read(path.join(logDirectory, 'pid.txt'), function (error, data) {
+       /* properties.read(path.join(logDirectory, 'pid.txt'), function (error, data) {
             if (!error) {
                 fs.writeFileSync(path.join(logDirectory, 'pid.txt'), '');
                 for (var item in data) {
                     if (item != worker.process.pid) {
-                        fs.appendFileSync(path.join(logDirectory, 'pid.txt'), item + '=' + data[item] + '\n');
+                        //fs.appendFileSync(path.join(logDirectory, 'pid.txt'), item + '=' + data[item] + '\n');
                     }
                 }
             }
-        });
+        });*/
 
         workers.removeWorker(worker);
 
