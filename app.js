@@ -22,8 +22,8 @@ if (cluster.isMaster) {
 
     //fs.writeFileSync(path.join(logDirectory, 'pid.txt'), process.pid + '=master\n');
 
-    fs.appendFileSync(fileLog, '\n\n-------------------------------Initializing workers...\n');
-    fs.appendFileSync(fileLog, 'Cluster MASTER starting... PID: ' + process.pid + '. Initializing ' + numWorkers + ' workers!\n');
+    //fs.appendFileSync(fileLog, '\n\n-------------------------------Initializing workers...\n');
+    //fs.appendFileSync(fileLog, 'Cluster MASTER starting... PID: ' + process.pid + '. Initializing ' + numWorkers + ' workers!\n');
     console.log('Initializing workers...');
     console.log('Cluster MASTER starting... PID: ' + process.pid + '. Initializing ' + numWorkers + ' workers!');
 
@@ -32,7 +32,7 @@ if (cluster.isMaster) {
     }
 
     cluster.on('fork', function (worker) {
-        fs.appendFileSync(fileLog, 'Cluster worker PID: ' + worker.process.pid + ' started!\n');
+        //fs.appendFileSync(fileLog, 'Cluster worker PID: ' + worker.process.pid + ' started!\n');
         console.log('Cluster worker PID: ' + worker.process.pid + ' started!');
     });
 
@@ -59,12 +59,12 @@ if (cluster.isMaster) {
         }
 
         //fs.appendFileSync(path.join(logDirectory, 'pid.txt'), worker.process.pid + '=worker' + '\n');
-        fs.appendFileSync(fileLog, 'Cluster worker PID: ' + worker.process.pid + ' listening! the worker is now connected to ' + address.address + ':' + address.port + ' [type: ' + addressType + ']\n');
+        //fs.appendFileSync(fileLog, 'Cluster worker PID: ' + worker.process.pid + ' listening! the worker is now connected to ' + address.address + ':' + address.port + ' [type: ' + addressType + ']\n');
         console.log('Cluster worker PID: ' + worker.process.pid + ' listening! the worker is now connected to ' + address.address + ':' + address.port + ' [type: ' + addressType + ']');
     });
 
     cluster.on('disconnect', function (worker) {
-        fs.appendFileSync(fileLog, 'Cluster worker PID: ' + worker.process.pid + ' disconnected!\n');
+        //fs.appendFileSync(fileLog, 'Cluster worker PID: ' + worker.process.pid + ' disconnected!\n');
         console.log('Cluster worker PID: ' + worker.process.pid + ' disconnected!');
     });
 
@@ -82,10 +82,10 @@ if (cluster.isMaster) {
 
         workers.removeWorker(worker);
 
-        fs.appendFileSync(fileLog, 'Cluster worker PID: ' + worker.process.pid + ' killed! [details - code: ' + code + ', signal: ' + signal + ']\n');
+        //fs.appendFileSync(fileLog, 'Cluster worker PID: ' + worker.process.pid + ' killed! [details - code: ' + code + ', signal: ' + signal + ']\n');
         console.log('Cluster worker PID: ' + worker.process.pid + ' killed! [details - code: ' + code + ', signal: ' + signal + ']');
         if (worker.suicide === false) {
-            fs.appendFileSync(fileLog, 'Starting a new worker...\n');
+            //fs.appendFileSync(fileLog, 'Starting a new worker...\n');
             console.log('Starting a new worker...');
             cluster.fork();
         }
