@@ -15,4 +15,4 @@ deploy:
   app:
     master: voxWeb
   on:
-    repo: ir-taimal10/voxWeb
+    repo: ir-taimal10/VoxWeb
