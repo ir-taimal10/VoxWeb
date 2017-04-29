@@ -1,0 +1,58 @@
+<div class="vx-login md-padding" layout="row" layout-align="center start">
+    <div class="md-whiteframe-z1">
+        <md-tabs md-selected="tabIndex" class="md-primary logintabs" md-dynamic-height md-border-bottom>
+
+            <md-tab id="tab1" label="Sign In">
+                <md-content class="md-padding">
+                    <div class="error" ng-show="loginError">{{loginError}}</div>
+                    <form name="loginForm" ng-submit="ctrl.login(credentials)">
+                        <md-input-container class="vx-input-container">
+                            <label class="item item-input">Username</label>
+                            <input name="userName" type="text" ng-model="credentials.userName" required>
+
+                            <div ng-messages="loginForm.userName.$error" ng-show="loginForm.userName.$touched">
+                                <div ng-message="required"></div>
+                            </div>
+                        </md-input-container>
+                        <md-input-container class="vx-input-container">
+                            <label>Password</label>
+                            <input name="password" type="password" ng-model="credentials.password" required
+                                   minlength="6">
+
+                            <div ng-messages="loginForm.password.$error" ng-show="loginForm.password.$touched">
+                                <div ng-message="minlength"></div>
+                            </div>
+                        </md-input-container>
+                        <div layout="row" layout-align="space-around center" layout-wrap>
+                            <div ng-if="ctrl.service.loginResult" class="vx-error-login">
+                                {{ctrl.service.loginResult}}
+                            </div>
+                            <md-button type="submit" class="btn waves-effect waves-light red darken-1"
+                                       ng-disabled="loginForm.$invalid || authPending" flex="80">
+                                Login
+                            </md-button>
+                        </div>
+                    </form>
+                    <md-divider></md-divider>
+                    <h6>Sign in or register with:</h6>
+
+                    <div layout="row" layout-align="space-around center" layout-wrap>
+                        <md-button class="md-primary" ng-click="socialAuth('facebook')"
+                                   ng-disabled="authPending" flex="25">
+                            Facebook
+                        </md-button>
+                        <md-button class="md-primary" ng-click="socialAuth('google')" ng-disabled="authPending"
+                                   flex="25">
+                            Google
+                        </md-button>
+                    </div>
+                </md-content>
+            </md-tab>
+
+            <md-tab id="tab2" label="Sign Up">
+                <vx-user-form></vx-user-form>
+            </md-tab>
+
+        </md-tabs>
+    </div>
+</div>

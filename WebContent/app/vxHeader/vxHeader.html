@@ -1,0 +1,48 @@
+<!-- Pre Loader -->
+<div id="loader-wrapper">
+    <div id="loader"></div>
+
+    <div class="loader-section section-left"></div>
+    <div class="loader-section section-right"></div>
+
+</div>
+
+<!--Navigation-->
+<div class="navbar-fixed">
+    <nav id="nav_f" class="default_color" role="navigation">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="#" id="logo-container" class="brand-logo">
+                    <i class="vx-icon-logo mdi-av-mic-none"></i>
+                    <span>Vox</span>
+                </a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="#intro">Service</a></li>
+                    <li><a href="#work">Work</a></li>
+                    <li><a href="#team">Team</a></li>
+                    <li ng-if="ctrl.getUser()" class="vx-user-menu">
+                        <a ng-click="ctrl.toggleMenu()">
+                            <i class="vx-user-icon mdi-image-timer-auto"></i>
+                            {{ctrl.getUser()}}
+                        </a>
+                        <ul ng-if="ctrl.showMenu">
+                            <li>
+                                <a ng-click="ctrl.logout()">
+                                    <i class="vx-user-icon mdi-action-settings-power"></i>
+                                    Cerrar sesion
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul id="nav-mobile" class="side-nav">
+                    <li><a href="#intro">Service</a></li>
+                    <li><a href="#work">Work</a></li>
+                    <li><a href="#team">Team</a></li>
+                    <li><a>{{ctrl.getUser()}}</a></li>
+                </ul>
+                <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+            </div>
+        </div>
+    </nav>
+</div>

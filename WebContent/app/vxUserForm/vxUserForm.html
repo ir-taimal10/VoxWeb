@@ -1,0 +1,58 @@
+<md-content class=" vx-user-form md-padding">
+    <div class="error" ng-show="signupError">{{signupError}}</div>
+    <form name="regForm" ng-submit="ctrl.register(registration)">
+        <md-input-container class="vx-input-container">
+            <label class="item item-input">Nombre completo</label>
+            <input name="name" type="text" ng-model="registration.name" required>
+
+            <div ng-messages="regForm.name.$error" ng-show="regForm.name.$touched">
+                <div ng-message="required">&nbsp;</div>
+            </div>
+        </md-input-container>
+        <md-input-container class="vx-input-container">
+            <label class="item item-input">Usuario</label>
+            <input name="userName" type="text" ng-model="registration.userName"
+                   required minlength="6" maxlength="16" ng-pattern="/^[a-z0-9_-]{6,16}$/"
+                   check-username>
+
+            <div ng-messages="regForm.userName.$error" ng-show="regForm.userName.$touched">
+                <div ng-message="required">&nbsp;</div>
+            </div>
+        </md-input-container>
+        <md-input-container class="vx-input-container">
+            <label class="item item-input">Email</label>
+            <input name="email" type="email" ng-model="registration.email"
+                   required check-email>
+
+            <div ng-messages="regForm.email.$error" ng-show="regForm.email.$touched">
+                <div ng-message="required">&nbsp;</div>
+            </div>
+        </md-input-container>
+        <md-input-container class="vx-input-container">
+            <label class="item item-input">Elija una contraseña</label>
+            <input name="password" type="password" ng-model="registration.password" required
+                   minlength="6">
+
+            <div ng-messages="regForm.password.$error" ng-show="regForm.password.$touched">
+                <div ng-message="required">&nbsp;</div>
+            </div>
+        </md-input-container>
+        <md-input-container class="vx-input-container">
+            <label class="item item-input">Confirme la contraseña</label>
+            <input name="confirmPassword" type="password"
+                   ng-model="registration.confirmPassword" required
+                   matches="registration.password">
+
+            <div ng-messages="regForm.confirmPassword.$error"
+                 ng-show="regForm.confirmPassword.$touched">
+                <div ng-message="required">&nbsp;</div>
+            </div>
+        </md-input-container>
+        <div ng-if="ctrl.service.registerResult" class="vx-error-register">
+            {{ctrl.service.registerResult}}
+        </div>
+        <md-button type="submit" class="md-raised md-primary" ng-disabled="regForm.$invalid">
+            Register
+        </md-button>
+    </form>
+</md-content>

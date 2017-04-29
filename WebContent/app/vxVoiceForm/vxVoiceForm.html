@@ -1,0 +1,114 @@
+<div class="vx-voice-form">
+    <div ng-if="!ctrl.voiceSended" class="col s12 m12 l5">
+        <p class="vx-confirmation-text">
+            <span class="vx-paragraph-red"> ¡Participa en esta convocatoria!</span><br/>
+            Participar en una convocatoria es muy sencillo, solo tienes que subir un archivo de audio y esperar que a
+            que elijan tu voz.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat.<br/>
+        </p>
+
+    </div>
+    <div ng-if="!ctrl.voiceSended" class="vx-form-content col s12 m12 l6">
+        <div class="col s12 m4 l12">
+            <md-input-container class="vx-voice-upload-btn">
+                <a ngf-select
+                   ngf-multiple="false"
+                   accept="audio/*"
+                   filters="audio/*"
+                   ngf-change="ctrl.attachFile($files)">
+                    <i class="mdi-file-cloud"></i>
+                    <i class="voice-icon mdi-av-mic-none"></i>
+                    <h6 ng-if="!ctrl.file">Adjuntar audio</h6>
+                    <h6 ng-if="ctrl.file">{{ctrl.file.name}}</h6>
+                </a>
+            </md-input-container>
+
+        </div>
+        <div class="col s12 m6 l12">
+            <md-input-container class="vx-input-container">
+                <label class="item item-input">Nombres</label>
+                <input name="ownerName"
+                       type="text"
+                       ng-model="ctrl.parameters.ownerName"
+                       maxlength="50"
+                       ng-pattern="/^[a-zA-Z0-9- ]*$/"
+                       md-maxlength="50">
+
+                <div ng-messages="voiceForm.ownerName.$error"
+                     ng-show="voiceForm.ownerName.$touched">
+                    <div ng-message="required">&nbsp;</div>
+                </div>
+            </md-input-container>
+            <md-input-container class="vx-input-container">
+                <label class="item item-input">Apellidos</label>
+                <input name="ownerLastName"
+                       type="text"
+                       ng-model="ctrl.parameters.ownerLastName"
+                       maxlength="50"
+                       ng-pattern="/^[a-zA-Z0-9- ]*$/"
+                       md-maxlength="50">
+
+                <div ng-messages="voiceForm.ownerLastName.$error"
+                     ng-show="voiceForm.ownerLastName.$touched">
+                    <div ng-message="required">&nbsp;</div>
+                </div>
+            </md-input-container>
+            <md-input-container class="vx-input-container">
+                <label class="item item-input">Email*</label>
+                <input name="name"
+                       type="email"
+                       ng-model="ctrl.parameters.email"
+                       maxlength="50"
+                       md-maxlength="50">
+
+                <div ng-messages="voiceForm.email.$error"
+                     ng-show="voiceForm.email.$touched">
+                    <div ng-message="required">&nbsp;</div>
+                </div>
+            </md-input-container>
+        </div>
+        <div class="col s12 m10 l12">
+            <md-input-container class="vx-input-container">
+                <label class="item item-input">Observaciones</label>
+
+                <textarea name="bio"
+                          rows="3"
+                          md-maxlength="150"
+                          ng-model="ctrl.parameters.comment">
+                            </textarea>
+                <div ng-messages="voiceForm.comment.$error"
+                     ng-show="voiceForm.comment.$touched">
+                    <div ng-message="required">&nbsp;</div>
+                </div>
+            </md-input-container>
+        </div>
+        <div class="col s12 m12 l12">
+            <div class="center-align">
+                <md-button ng-click="ctrl.createVoice()"
+                           ng-disabled="!(ctrl.file && ctrl.parameters.email)"
+                           class="btn waves-effect waves-light red darken-1">
+                    Crear Voz
+                </md-button>
+            </div>
+        </div>
+    </div>
+    <div ng-if="ctrl.voiceSended" class="">
+        <div class="col s12 m12 l12">
+            <p class="vx-confirmation-text">Hemos recibido tu voz y la estamos procesando para que sea publicada en la
+                página del concurso y pueda ser posteriormente revisada por nuestro equipo de trabajo. Tan pronto la voz
+                quede publicada en la página del concurso te notificaremos por email</p>
+        </div>
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="center-align">
+                    <md-button ng-click="ctrl.reset()"
+                               class="btn waves-effect waves-light red darken-1">
+                        Crear otro audio
+                    </md-button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

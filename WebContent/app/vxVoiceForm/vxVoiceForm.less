@@ -1,0 +1,63 @@
+.vx-voice-form {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  /* vertical-align: middle; */
+  align-items: center;
+  .vx-form-content {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  p.vx-confirmation-text {
+    font-size: 1.23rem;
+    color: #858585;
+    text-align: justify;
+    .vx-paragraph-red {
+      font-size: 1.5rem;
+      color: #ef7d7d !important;
+      margin-bottom: 15px;
+    }
+  }
+
+  .vx-voice-upload-btn {
+    display: flex;
+    justify-content: center;
+    a {
+      font-size: 150px;
+      position: relative;
+      cursor: pointer;
+      color: rgba(33, 150, 243, 0.69);
+      transition: all 0.4s ease-in;
+      i.voice-icon {
+        color: rgba(255, 252, 252, 0.93);
+        position: absolute;
+        top: 88px;
+        left: 50px;
+        font-size: 44px;
+      }
+      h6 {
+        position: absolute;
+        top: 169px;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        color: #2196f3;
+      }
+      &:hover {
+        color: #2196F3;
+        i.voice-icon {
+          color: rgb(255, 255, 255);
+        }
+      }
+
+    }
+  }
+  .vx-confirmation-text {
+    color: #888892;
+    text-align: center;
+    margin: 40px 10%;
+  }
+}

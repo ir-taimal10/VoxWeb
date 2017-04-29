@@ -1,0 +1,9 @@
+<i class="r-icon r-icon-world"></i>
+<md-input-container>
+  <md-select ng-model="ctrl.$i18n.currentLanguageCulture"
+             ng-change="ctrl.$i18n.changeResource()"
+             aria-label="Close">
+    <md-option value="en-us">{{'usermenu_option_english' | translate}}</md-option>
+    <md-option value="es-co">{{'usermenu_option_spanish' | translate}}</md-option>
+  </md-select>
+</md-input-container>

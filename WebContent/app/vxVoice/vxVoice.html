@@ -1,0 +1,42 @@
+<div class="vx-voice col s12 m12 l12">
+    <md-card md-theme="{{ (ctrl.voice.doc.status != 'converted') ? 'dark-purple' : 'default' }}" md-theme-watch="">
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">{{ctrl.voice.doc.ownerName}} {{ctrl.voice.doc.ownerLastName}}</span>
+                <span class="md-subhead">{{ctrl.voice.doc.email}}</span>
+                <span class="md-subhead">{{ctrl.voice.doc.comment}}</span>
+            </md-card-title-text>
+            <md-card-title-media>
+                <md-fab-speed-dial md-open="ctrl.isOpen" md-direction="left" ng-class="md-scale">
+                    <md-fab-actions>
+                        <md-button aria-label="Convertido"
+                                   ng-disabled="ctrl.voice.doc.status != 'converted'"
+                                   href="{{ctrl.voice.doc.convertedUrl}}"
+                                   download="{{ ctrl.voice.doc.convertedUrl}}"
+                                   class="md-fab md-raised md-mini">
+                            <md-tooltip md-direction="top">
+                                Convertido
+                            </md-tooltip>
+                            <i class="mdi-av-queue-music"></i>
+                        </md-button>
+                        <md-button aria-label="Original"
+                                   ng-disabled="ctrl.voice.doc.status != 'converted'"
+                                   href="{{ctrl.voice.doc.originalUrl}}"
+                                   download="{{ ctrl.voice.doc.originalUrl}}"
+                                   class="md-fab md-raised md-mini">
+                            <md-tooltip md-direction="top">
+                                Original
+                            </md-tooltip>
+                            <i class="mdi-image-audiotrack"></i>
+                        </md-button>
+                    </md-fab-actions>
+                </md-fab-speed-dial>
+            </md-card-title-media>
+        </md-card-title>
+        <md-card-actions layout="row" layout-align="end center">
+            <md-button ng-disabled="true" ng-if="ctrl.voice.doc.status != 'converted'">Procesando</md-button>
+            <md-button ng-if="ctrl.voice.doc.status == 'converted' && !ctrl.playing" ng-click="ctrl.playVoice()">Play</md-button>
+            <md-button ng-if="ctrl.voice.doc.status == 'converted' && ctrl.playing" ng-click="ctrl.stopVoice()">Stop</md-button>
+        </md-card-actions>
+    </md-card>
+</div>

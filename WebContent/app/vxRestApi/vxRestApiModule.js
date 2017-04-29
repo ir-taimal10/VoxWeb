@@ -1,0 +1,7 @@
+angular.module('vxRestApiModule', ['ngResource'])
+
+
+
+
+
+

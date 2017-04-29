@@ -1,0 +1,11 @@
+{
+  "general_copyright": "helloworld  2016",
+  "general_unauthorized":"No autorizado",
+  "component_ready_comment":"El componente está listo para agregar mas funcionalidades",
+  "general_first_component":"Este es mi primer componente",
+  "general_component":"Componente",
+  "usermenu_option_english": "Inglés",
+  "usermenu_option_spanish": "Español",
+  "general_alert":"Esta es una función del controlador",
+  "input_text": "Texto"
+}

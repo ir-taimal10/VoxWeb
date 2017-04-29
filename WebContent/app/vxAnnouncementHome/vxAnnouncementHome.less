@@ -1,0 +1,107 @@
+@vx-fill-1: #ffffff;
+@vx-fill-2: #a6c8e0;
+vx-announcement-home {
+
+  .vx-home-canvas {
+    background: @vx-fill-1; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(@vx-fill-1, @vx-fill-2); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(@vx-fill-1, @vx-fill-2); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(@vx-fill-1, @vx-fill-2); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(@vx-fill-1, @vx-fill-2); /* Standard syntax */
+  }
+  .vx-announcement-title {
+    color: #ef7d7d;
+  }
+  .vx-announcement-param {
+    font-size: 1.1rem;
+    color: rgba(0,0,0,0.38);
+  }
+  #work.vx-voices-list {
+    padding-top: 0;
+    background-color: transparent;
+  }
+  #index-banner {
+    background-color: transparent;
+    .cd-headline {
+      color: #4d4d4d;
+      font-size: 4.0em;
+    }
+  }
+
+  .vx-announcement-banner {
+    max-width: 100%;
+  }
+
+  .container {
+    &.vx-announcement-list-container {
+      min-height: ~"calc(100vh)";
+    }
+    md-grid-tile {
+      transition: all 300ms ease-out 50ms;
+      /*background-color: rgba(0, 184, 212, 0.43);*/
+      .card {
+        width: 100%;
+        height: 100%;
+        .card-image {
+          height: 70%;
+          display: flex;
+          overflow: hidden;
+        }
+        .card-content {
+          .card-title {
+            line-height: 20px;
+            text-overflow: ellipsis;
+            height: 49px;
+            display: block;
+          }
+          .vx-item-actions {
+            font-size: 28px;
+            a {
+              opacity: 0.4;
+              transition: all 0.4s ease-out;
+              &:hover {
+                opacity: 1;
+              }
+            }
+
+          }
+        }
+        .card-reveal {
+          .card-title {
+            margin-bottom: 25px;
+          }
+          .vx-item-public-url {
+            margin: 1px 0 10px 0;
+            background-color: #dadada;
+            border-radius: 3px;
+            border: 1px solid #b7afaf;
+            padding: 1px 9px;
+            color: rgb(78, 20, 5);
+            font-size: 12px;
+            width: 100%;
+          }
+          .vx-detail-label {
+            margin: 0;
+            padding: 0;
+            display: block;
+          }
+          .vx-detail-value {
+            font-weight: bolder;
+            margin: 1px 0 10px 0;
+          }
+        }
+      }
+    }
+  }
+  .empty-list {
+    margin-bottom: 500px;
+    margin-top: 100px;
+    .btn-link {
+      cursor: pointer;
+    }
+  }
+  .parallax-container {
+    /*filter: blur(2px);
+    opacity: 0.4;*/
+  }
+}

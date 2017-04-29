@@ -1,0 +1,151 @@
+<div class="vx-announcement-form">
+    <div class="card">
+        <div class="card-image waves-effect waves-block waves-light">
+            <img class="activator" ng-src="{{ctrl.service.parameters.image}}">
+        </div>
+        <div class="card-content">
+            <md-input-container class="vx-input-container">
+                <a ngf-select
+                   ngf-multiple="false"
+                   accept=".jpg"
+                   filters=".jpg"
+                   ngf-change="ctrl.service.attachFile($files)">
+                    <i class="mdi-image-photo"></i>
+                    <label>Seleccione una imagen</label>
+                </a>
+            </md-input-container>
+        </div>
+    </div>
+    <form name="announcementForm">
+
+        <md-tabs md-selected="ctrl.currentStep" md-dynamic-height md-border-bottom>
+            <md-tab label="Paso 1">
+                <md-content class="vx-md-content">
+                    <md-input-container class=" row vx-input-container">
+                        <label class="item item-input">Nombre del la convocatoria</label>
+                        <input name="name"
+                               type="text"
+                               ng-model="ctrl.service.parameters.name"
+                               maxlength="50"
+                               ng-pattern="/^[a-zA-Z0-9- ]*$/"
+                               md-maxlength="50"
+                               required>
+
+                        <div ng-messages="announcementForm.name.$error" ng-show="announcementForm.name.$touched">
+                            <div ng-message="required">&nbsp;</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container class="vx-input-container">
+                        <label ng-if="!ctrl.service.parameters.publicUrl" class="item item-input">Url :
+                            {{ctrl.service.autoUrl}}</label>
+                        <label ng-if="ctrl.service.parameters.publicUrl" class="item item-input">Url
+                            convocatoria</label>
+                        <input name="publicUrl"
+                               type="text"
+                               ng-model="ctrl.service.parameters.publicUrl"
+                               maxlength="50"
+                               ng-pattern="/^[a-zA-Z0-9- ]*$/"
+                               md-maxlength="50">
+
+                        <div ng-messages="announcementForm.publicUrl.$error"
+                             ng-show="announcementForm.publicUrl.$touched">
+                            <div ng-message="required">&nbsp;</div>
+                        </div>
+                    </md-input-container>
+
+                    <md-input-container class="vx-input-container">
+                        <md-datepicker ng-model="ctrl.service.parameters.minDate"
+                                       md-placeholder="Vigente desde"
+                                       md-max-date="ctrl.service.parameters.maxDate">
+                        </md-datepicker>
+
+                        <div ng-messages="announcementForm.minDate.$error"
+                             ng-show="announcementForm.minDate.$touched">
+                            <div ng-message="required">&nbsp;</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container class="vx-input-container">
+                        <div>
+                            <md-datepicker ng-model="ctrl.service.parameters.maxDate"
+                                           md-placeholder="Vigente hasta"
+                                           md-min-date="ctrl.service.parameters.minDate">
+                            </md-datepicker>
+                        </div>
+
+                        <div ng-messages="announcementForm.maxDate.$error"
+                             ng-show="announcementForm.maxDate.$touched">
+                            <div ng-message="required">&nbsp;</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container class="vx-input-container">
+                        <label class="item item-input">Valor a pagar (COP)</label>
+                        <input name="amount"
+                               type="number"
+                               ng-model="ctrl.service.parameters.amount"
+                               maxlength="23"
+                               required>
+
+                        <div ng-messages="announcementForm.amount.$error" ng-show="announcementForm.amount.$touched">
+                            <div ng-message="required">&nbsp;</div>
+                        </div>
+                    </md-input-container>
+                </md-content>
+            </md-tab>
+            <md-tab label="Paso 2 ">
+                <md-content class="vx-md-content">
+                    <md-input-container class="vx-input-container">
+                        <label class="item item-input">Guión requerido</label>
+                        <textarea name="scriptRequired"
+                                  rows="3"
+                                  md-maxlength="150"
+                                  ng-model="ctrl.service.parameters.scriptRequired">
+                            </textarea>
+                        <div ng-messages="announcementForm.scriptRequired.$error"
+                             ng-show="announcementForm.scriptRequired.$touched">
+                            <div ng-message="required">&nbsp;</div>
+                        </div>
+                    </md-input-container>
+
+                    <md-input-container class="vx-input-container">
+                        <label class="item item-input">Recomendaciones generales</label>
+                        <textarea name="bio"
+                                  rows="3"
+                                  md-maxlength="150"
+                                  ng-model="ctrl.service.parameters.recommendations">
+                            </textarea>
+                        <div ng-messages="announcementForm.recommendations.$error"
+                             ng-show="announcementForm.recommendations.$touched">
+                            <div ng-message="required">&nbsp;</div>
+                        </div>
+                    </md-input-container>
+
+                </md-content>
+            </md-tab>
+        </md-tabs>
+
+        <div layout="row" layout-align="space-around center" layout-wrap>
+            <md-button ng-click="ctrl.back()"
+                       ng-if="!ctrl.isFirstStep()"
+                       class="btn waves-effect waves-light grey darken-1">
+                Atras
+            </md-button>
+            <md-button ng-click="ctrl.continue()"
+                       ng-if="!ctrl.isLastStep()"
+                       class="btn waves-effect waves-light blue darken-2">
+                Continuar
+            </md-button>
+            <md-button type="submit"
+                       ng-click="ctrl.create()"
+                       ng-if="ctrl.isLastStep() &&  ctrl.service.action =='create'"
+                       class="btn waves-effect waves-light red darken-1">
+                Crear
+            </md-button>
+            <md-button type="submit"
+                       ng-click="ctrl.update()"
+                       ng-if="ctrl.isLastStep() && ctrl.service.action =='update'"
+                       class="btn waves-effect waves-light red darken-1">
+                Actualizar
+            </md-button>
+        </div>
+    </form>
+</div>

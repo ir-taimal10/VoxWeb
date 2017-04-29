@@ -1,0 +1,83 @@
+<vx-header></vx-header>
+
+<div ng-if="!ctrl.service.announcementNotFound" class="vx-home-canvas">
+    <div class="section no-pad-bot">
+        <div class="container">
+            <div class="card">
+                <div class="card-content row">
+                    <div class="col s12 m4 l4">
+                        <img ng-if="!ctrl.service.announcement.image" class="vx-announcement-banner" src="img/mic.png">
+                        <img ng-if="ctrl.service.announcement.image" class="vx-announcement-banner"
+                             ng-src="{{ctrl.service.announcement.image}}">
+                    </div>
+                    <div class="col s12 m8 l8">
+                        <h5 class="vx-announcement-title"><b>{{ctrl.service.announcement.name}}</b></h5>
+                        <h5 class="vx-announcement-param">Vigente desde: <b>{{ctrl.service.announcement.minDate
+                            |date:'yyyy-MM-dd'}}</b></h5>
+                        <h5 class="vx-announcement-param">Hasta: <b>{{ctrl.service.announcement.maxDate |
+                            date:'yyyy-MM-dd'}}</b></h5>
+                        <h5 class="vx-announcement-param">Valor asignado: <b>{{ctrl.service.announcement.amount |
+                            currency}}</b></h5>
+                        <h5 class="vx-announcement-param">Guión: <b>{{ctrl.service.announcement.scriptRequired}}</b>
+                        </h5>
+                        <h5 class="vx-announcement-param">Recomendaciones: <b>{{ctrl.service.announcement.recommendations}}</b>
+                        </h5>
+                    </div>
+
+                    <div class="col s12 m12 l12">
+                        <br/><br/>
+                        <md-divider></md-divider>
+                        <vx-voice-form announcement-id="ctrl.service.announcement.id"></vx-voice-form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section scrollspy vx-voices-list" id="work">
+        <div ng-if="!ctrl.service.empty" class="container">
+            <div class="row">
+                <h5 class="vx-announcement-title center-align"><b>Participantes</b></h5>
+                <vx-voice voice="voice" ng-repeat="voice in ctrl.service.voices"></vx-voice>
+            </div>
+        </div>
+
+        <div ng-if="ctrl.service.empty" class="container">
+            <div class="row">
+                <br/><br/><br/>
+                <h5 class="vx-announcement-param center-align"><b>Aún no hay participantes en esta convocatoria</b></h5>
+            </div>
+        </div>
+        <div class="vx-load-more" layout="row" layout-align="space-around center" layout-wrap>
+            <md-button ng-click="ctrl.loadMore()"
+                       class="btn waves-effect waves-light grey darken-0">
+                <i class="mdi-navigation-refresh"></i>
+                Cargar mas
+            </md-button>
+        </div>
+    </div>
+</div>
+
+<div ng-if="ctrl.service.announcementNotFound">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <br/><br/><br/>
+                <h5 class="vx-announcement-param center-align">La convocatoria no existe</h5>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Parallax-->
+<div class="parallax-container">
+    <div class="parallax">
+        <img class="vx-announcement-banner"
+             src="img/parallax1.png">
+        <!--<img ng-if="ctrl.service.announcement.image"
+             class="vx-announcement-banner"
+             ng-src="{{ctrl.service.announcement.image}}">-->
+    </div>
+</div>
+
+<vx-footer></vx-footer>
