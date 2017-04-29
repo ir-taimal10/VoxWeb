@@ -51,7 +51,8 @@ Vox\WebContent>webpack -w
 http://127.0.0.1:5984/_utils/
 //Create  Admin  user: admin   password:admin
 http://localhost:5984/_utils/#createAdmin/couchdb@localhost
-//Crete initial DBs
+//Create initial DBs
 announcements
 users
+voices
 ```
