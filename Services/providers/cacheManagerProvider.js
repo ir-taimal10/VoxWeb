@@ -1,9 +1,4 @@
-var Redis = require('ioredis');
-var redis;
-if (process.env.VOX_REDIS_URL) {
-    redis = new Redis(6379, process.env.VOX_REDIS_URL);
-}
-
+var redis = require('redis').createClient(process.env.REDIS_URL);
 
 exports.get = function (key, done) {
     if (redis) {
