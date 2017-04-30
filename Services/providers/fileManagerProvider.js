@@ -20,6 +20,7 @@ function getRepository() {
 
 
 function saveFileInS3(file, key, done) {
+    console.log('saveFileInS3 : key ' + key);
     var uploadParams = {
         Bucket: process.env.VOX_BUCKET_NAME,
         Key: '',
@@ -48,6 +49,7 @@ function saveFileInS3(file, key, done) {
 
 
 function saveFileInLocalSystem(file, key, done) {
+    console.log('saveFileInLocalSystem : key ' + key);
     var filePath = path.join(getRepository(), 'voices', key);
     //add file to the folder
     //var tempPath = path.join(getRepository(), '_tmp', file.filename);
