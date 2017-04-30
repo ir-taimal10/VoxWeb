@@ -62,7 +62,9 @@ function saveFileInLocalSystem(file, key, done) {
 
 
 exports.saveFile = function (file, key, done) {
-    if (process.env && process.env.VOX_SERVICES_ACCESS_KEY_ID && process.env.VOX_SERVICES_SECRET_KEY) {
+    console.log('VOX_SERVICES_ACCESS_KEY_ID', process.env.VOX_SERVICES_ACCESS_KEY_ID);
+    console.log('VOX_SERVICES_SECRET_KEY', process.env.VOX_SERVICES_SECRET_KEY);
+    if (process.env.VOX_SERVICES_ACCESS_KEY_ID && process.env.VOX_SERVICES_SECRET_KEY) {
         saveFileInS3(file, key, done);
     } else {
         saveFileInLocalSystem(file, key, done);
